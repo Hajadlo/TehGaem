@@ -4,9 +4,9 @@ import characters.Postava;
 
 public abstract class Predmet implements PredmetRozhrani{
 	protected String nazev;
-	protected static int cena;
+	protected int cena;
 	
-	public Predmet(String nazev, int cena){
+	public Predmet(String nazev){
 		this.nazev = nazev;
 		this.cena = cena;
 	}

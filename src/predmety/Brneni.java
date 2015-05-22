@@ -13,7 +13,7 @@ public abstract class Brneni extends Predmet{
 		druhySlot = predmet;
 	}
 	
-	public float getObrana(Brneni brneni){
+	public float getObrana(){
 		return this.obrana;
 	}
 }

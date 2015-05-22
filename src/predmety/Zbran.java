@@ -5,7 +5,7 @@ import characters.*;
 public abstract class Zbran extends Predmet{
 	private float utok;
 	public Zbran(String nazev){
-		super(nazev, cena);
+		super(nazev);
 		this.utok = utok;
 	}
 	public void equipZbran(Predmet predmet, Postava postava){

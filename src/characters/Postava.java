@@ -99,17 +99,17 @@ public abstract class Postava implements PostavaRozhrani{
 		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
 				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
 				+ this.energie + "\n" + "Sila: " + this.sila + "\nInteligence: " + this.inteligence
-				+ "\n" + "Obrana: " + this.obrana + "\nUtok: " + this.utok + "\n Predmety: ");
+				+ "\n" + "Obrana: " + this.obrana + "\nUtok: " + this.utok + "\nPredmety: " + slot1 + ", " + slot2);
 	}
 	
 	
 	public String getPredmet(Predmet predmet){
-		if (predmet.vratCenu(predmet) > this.zlataky){
+		if (predmet.vratCenu() > this.zlataky){
 			return "Nemate dost zlata";
 		}
-		this.zlataky -= predmet.vratCenu(predmet);
+		this.zlataky -= predmet.vratCenu();
 		this.predmety.add(predmet);
-		return "Uspesne jste koupil " + predmet.vratNazev(predmet);
+		return "Uspesne jste koupil " + predmet.vratNazev();
 	}
 	
 	

@@ -15,11 +15,11 @@ public abstract class Predmet implements PredmetRozhrani{
 		
 	}
 	
-	public int vratCenu(Predmet predmet){
-		return predmet.cena;
+	public int vratCenu(){
+		return this.cena;
 	}
 	
-	public String vratNazev(Predmet predmet){
-		return predmet.nazev;
+	public String vratNazev(){
+		return this.nazev;
 	}
 }

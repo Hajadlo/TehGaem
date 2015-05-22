@@ -5,7 +5,7 @@ import characters.Postava;
 public abstract class Brneni extends Predmet{
 	private float obrana;
 	public Brneni(String nazev, int cena) {
-		super(nazev, cena);
+		super(nazev);
 		this.obrana = obrana;
 	}
 	public void equipBrneni(Predmet predmet, Postava postava){

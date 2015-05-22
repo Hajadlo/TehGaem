@@ -28,6 +28,9 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	protected ArrayList<Predmet> predmety = new ArrayList<Predmet>();
 	
+	protected Predmet slot1;
+	protected Predmet slot2;
+	
 	public Postava(String jmeno){
 		this.id +=1;
 		this.jmeno = jmeno;
@@ -39,7 +42,7 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	public void boj(Postava nepritel) {
-		System.out.println(this.jmeno + " utok: " + (this.utok));
+		System.out.println(this.jmeno + " utok: " + (this.utok/* + this.getUtok(zbran)*/));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
 		if ((this.utok) > nepritel.obrana){
 			this.zivoty -= 1;
@@ -108,6 +111,17 @@ public abstract class Postava implements PostavaRozhrani{
 		this.zlataky -= predmet.vratCenu(predmet);
 		this.predmety.add(predmet);
 		return "Uspesne jste koupil " + predmet.vratNazev(predmet);
+	}
+	
+	public Predmet getslot1(){
+		return slot1;
+	}
+	public Predmet getslot2(){
+		return slot2;
+	}
+	
+	public float getUtok(Zbran zbran){
+		return zbran.setUtok(zbran);
 	}
 	
 	

@@ -9,10 +9,4 @@ public class Platovka extends Brneni{
 		super(nazev, cena);
 		this.bonusStr = bonusStr;
 	}
-	@Override
-	public void vratBrneni(Postava postavicka) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

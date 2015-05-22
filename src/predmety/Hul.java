@@ -11,7 +11,4 @@ public class Hul extends Zbran{
 		this.bonusInt = bonusInt;
 		
 	}
-	@Override
-	public void equipZbran(Postava postavicka) {	
-	}
 }

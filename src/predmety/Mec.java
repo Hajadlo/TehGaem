@@ -10,9 +10,4 @@ public class Mec extends Zbran{
 		super(nazev);
 		this.bonusStr = bonusStr;
 	}
-	@Override
-	public void equipZbran(Postava postavicka) {	
-	}
-	
-
 }

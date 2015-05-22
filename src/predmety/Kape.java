@@ -9,10 +9,5 @@ public class Kape extends Brneni{
 		super(nazev, cena);
 		this.bonusInt = bonusInt;
 	}
-	@Override
-	public void vratBrneni(Postava postavicka) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

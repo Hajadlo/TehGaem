@@ -8,5 +8,12 @@ public abstract class Zbran extends Predmet{
 		super(nazev, cena);
 		this.utok = utok;
 	}
-	public abstract void equipZbran(Postava postavicka);
+	public void equipZbran(Predmet predmet, Postava postava){
+		Predmet prvniSlot = postava.getslot1();
+		prvniSlot = predmet;
+	}
+	
+	public float setUtok(Zbran zbran){
+		return this.utok;
+	}
 }

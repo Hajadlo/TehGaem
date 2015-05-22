@@ -8,5 +8,12 @@ public abstract class Brneni extends Predmet{
 		super(nazev, cena);
 		this.obrana = obrana;
 	}
-	public abstract void vratBrneni(Postava postavicka);
+	public void equipBrneni(Predmet predmet, Postava postava){
+		Predmet druhySlot = postava.getslot2();
+		druhySlot = predmet;
+	}
+	
+	public float getObrana(Brneni brneni){
+		return this.obrana;
+	}
 }

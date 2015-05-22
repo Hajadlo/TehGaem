@@ -12,11 +12,11 @@ public class Ukol {
 		this.pocetExp = postava.level;
 	}
 	
-	public int vratEnergii(Ukol ukol){
+	public int vratEnergii(){
 		return this.potrebnaEnergie;
 	}
 	
-	public int vratExpy(Ukol ukol){
+	public int vratExpy(){
 		return this.pocetExp;
 	}
 }

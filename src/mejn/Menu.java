@@ -21,9 +21,9 @@ public class Menu {
 		typek.boj(magic);
 		magic.boj(typek);
 		
-		//Predmet hulka = new Predmet("Hulka cool veci", 12);
+		Predmet hulka = new Hul("Hulka cool veci", 12, 15);
 		
-		//magic.getPredmet(hulka);
+		magic.getPredmet(hulka);
 		
 		typek.boj(magic);
 		typek.boj(magic);

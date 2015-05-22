@@ -13,7 +13,7 @@ public abstract class Zbran extends Predmet{
 		prvniSlot = predmet;
 	}
 	
-	public float setUtok(Zbran zbran){
+	public float setUtok(){
 		return this.utok;
 	}
 }

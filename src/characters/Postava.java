@@ -34,12 +34,12 @@ public abstract class Postava implements PostavaRozhrani{
 	public Postava(String jmeno){
 		this.id +=1;
 		this.jmeno = jmeno;
-		this.maxHP = this.zivoty;
 		this.zlataky = 20;
 		this.level = 1;
 		this.exp = 0;
 		this.energie = 20;
 	}
+	
 	
 	public void boj(Postava nepritel) {
 		System.out.println(this.jmeno + " utok: " + (this.utok/* + this.getUtok(zbran)*/));
@@ -86,21 +86,20 @@ public abstract class Postava implements PostavaRozhrani{
 			return 0;
 		}
 		if ((this.zivoty + zlataky) > this.maxHP){
-			System.out.println(this.jmeno + "presahuje svoje maximum zivotu");
+			System.out.println(this.jmeno + " presahuje svoje maximum zivotu");
 			return 0;
-		}
-		System.out.println(this.jmeno + " byl dolecen o " + zlataky);
+		}	
 		this.zivoty += zlataky;
+		System.out.println(this.jmeno + " byl dolecen o " + zlataky + " na " + (this.zivoty));
 		return this.zivoty;
 	}
 	
 	
 	public String info(){
-		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\n"
-				+ "Zlataky: " + this.zlataky + "\nLevel: " + this.level + "\n"
-				+ "XP: " + this.exp +"\nEnergie: " + this.energie + "\n"
-				+ "Sila: " + this.sila + "\nInteligence: " + this.inteligence + "\n"
-				+ "Obrana: " + this.obrana + "\nUtok: " + this.utok + "\n");
+		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
+				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
+				+ this.energie + "\n" + "Sila: " + this.sila + "\nInteligence: " + this.inteligence
+				+ "\n" + "Obrana: " + this.obrana + "\nUtok: " + this.utok + "\n Predmety: ");
 	}
 	
 	
@@ -113,24 +112,28 @@ public abstract class Postava implements PostavaRozhrani{
 		return "Uspesne jste koupil " + predmet.vratNazev(predmet);
 	}
 	
+	
 	public Predmet getslot1(){
 		return slot1;
 	}
+	
+	
 	public Predmet getslot2(){
 		return slot2;
 	}
 	
+	
 	public float getUtok(Zbran zbran){
-		return zbran.setUtok(zbran);
+		return zbran.setUtok();
 	}
 	
 	
 	public String aktivujQuest(Ukol ukol){
-		if (ukol.vratEnergii(ukol) > this.energie){
+		if (ukol.vratEnergii() > this.energie){
 			return (this.jmeno + " ma moc malo energie.");
 		}
 		this.aktivniQ = true;
-		return (this.jmeno + " se vypravil na ukol a ziskal " + ukol.vratExpy(ukol));
+		return (this.jmeno + " se vypravil na ukol a ziskal " + ukol.vratExpy());
 	}
 	
 	

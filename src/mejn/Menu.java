@@ -1,7 +1,5 @@
 package mejn;
 
-import java.util.*;
-
 import creature.Kreatura;
 import characters.*;
 import predmety.*;
@@ -21,11 +19,12 @@ public class Menu {
 		typek.boj(magic);
 		magic.boj(typek);
 		
-		Predmet hulka = new Hul("Hulka cool veci", 12, 15);
+		Predmet hulka = new Hul("Hulka cool veci");
+		Predmet kape = new Kape("Kape cool veci");
 		
 		magic.getPredmet(hulka);
-		
-		typek.boj(magic);
+		magic.getPredmet(kape);
+
 		typek.boj(magic);
 		typek.boj(magic);
 		typek.doleceni(3);

@@ -1,8 +1,5 @@
 package characters;
 
-import creature.Kreatura;
-
-
 public class Kouzelnik extends Postava{
 	
 	public Kouzelnik(String jmeno){
@@ -12,7 +9,8 @@ public class Kouzelnik extends Postava{
 		this.sila = 10;
 		this.obrana = 10;
 		this.inteligence = 25;
-		this.utok = this.inteligence; // + itemek!
+		this.utok = 0;
+		this.obrana = 0;
 		this.povolani = "Kouzelnik";
 	}
 }

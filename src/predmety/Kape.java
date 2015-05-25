@@ -1,13 +1,13 @@
 package predmety;
 
-import characters.Postava;
-
 public class Kape extends Brneni{
-	static boolean mageOnly = true;
-	private float bonusInt;
-	public Kape(String nazev, int cena) {
-		super(nazev, cena);
-		this.bonusInt = bonusInt;
+	public Kape(String nazev) {
+		super(nazev);
+		this.mageOnly = true;
+		this.utok = 0;
+		this.obrana = 10;
+		this.bonusInt = 15;
+		this.bonusStr = 0;
 	}
 
 }

@@ -1,12 +1,13 @@
 package predmety;
 
-import characters.Postava;
 
 public class Platovka extends Brneni{
-	static boolean mageOnly = false;
-	private float bonusStr;
-	public Platovka(String nazev, int cena) {
-		super(nazev, cena);
-		this.bonusStr = bonusStr;
+	public Platovka(String nazev) {
+		super(nazev);
+		this.mageOnly = false;
+		this.utok = 0;
+		this.obrana = 15;
+		this.bonusStr = 10;
+		this.bonusInt = 0;
 	}
 }

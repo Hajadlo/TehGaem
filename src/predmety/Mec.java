@@ -1,13 +1,13 @@
 package predmety;
 
-import characters.Postava;
-
 
 public class Mec extends Zbran{
-	static boolean mageOnly = false;
-	private float bonusStr;
-	public Mec(String nazev, int cena, float utok) {
+	public Mec(String nazev) {
 		super(nazev);
-		this.bonusStr = bonusStr;
+		this.mageOnly = true;
+		this.utok = 0;
+		this.obrana = 15;
+		this.bonusStr = 10;
+		this.bonusInt = 0;
 	}
 }

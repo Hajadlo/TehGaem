@@ -10,7 +10,8 @@ public class Rytir extends Postava{
 		this.sila = 15;
 		this.obrana = 20;
 		this.inteligence = 10;
-		this.utok = this.sila; // + itemek!
+		this.utok = 0;
+		this.obrana = 0;
 		this.povolani = "Rytir";
 	}
 }

@@ -1,14 +1,13 @@
 package predmety;
-
-import characters.Postava;
-
+;
 
 public class Hul extends Zbran{
-	static boolean mageOnly = true;
-	private float bonusInt;
-	public Hul(String nazev, int cena, float utok) {
+	public Hul(String nazev) {
 		super(nazev);
-		this.bonusInt = bonusInt;
-		
+		this.mageOnly = true;
+		this.utok = 10;
+		this.obrana = 0;
+		this.bonusInt = 15;
+		this.bonusStr = 0;
 	}
 }

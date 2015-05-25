@@ -17,10 +17,12 @@ public abstract class Postava implements PostavaRozhrani{
 	protected int exp;
 	protected int energie;
 	
+
+	
 	protected float sila;
 	protected float inteligence;
-	protected float obrana;
 	protected float utok;
+	protected float obrana;
 	
 	protected boolean aktivniQ;
 
@@ -31,6 +33,8 @@ public abstract class Postava implements PostavaRozhrani{
 	protected Predmet slot1;
 	protected Predmet slot2;
 	
+	float[] policko = new float[4];
+	
 	public Postava(String jmeno){
 		this.id +=1;
 		this.jmeno = jmeno;
@@ -38,11 +42,14 @@ public abstract class Postava implements PostavaRozhrani{
 		this.level = 1;
 		this.exp = 0;
 		this.energie = 20;
+		
+		slot1 = this.bezSlot();
+		slot2 = this.bezSlot();
 	}
 	
 	
 	public void boj(Postava nepritel) {
-		System.out.println(this.jmeno + " utok: " + (this.utok/* + this.getUtok(zbran)*/));
+		System.out.println(this.jmeno + " utok: " + (this.utok));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
 		if ((this.utok) > nepritel.obrana){
 			this.zivoty -= 1;
@@ -98,8 +105,8 @@ public abstract class Postava implements PostavaRozhrani{
 	public String info(){
 		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
 				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
-				+ this.energie + "\n" + "Sila: " + this.sila + "\nInteligence: " + this.inteligence
-				+ "\n" + "Obrana: " + this.obrana + "\nUtok: " + this.utok + "\nPredmety: " + slot1 + ", " + slot2);
+				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
+				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " + slot1.vratNazev() + ", " + slot2.vratNazev());
 	}
 	
 	
@@ -109,6 +116,13 @@ public abstract class Postava implements PostavaRozhrani{
 		}
 		this.zlataky -= predmet.vratCenu();
 		this.predmety.add(predmet);
+		
+		if (predmet.vratSlot() == 1){
+			slot1 = predmet;
+		}
+		else{
+			slot2 = predmet;
+		}
 		return "Uspesne jste koupil " + predmet.vratNazev();
 	}
 	
@@ -123,10 +137,20 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	
-	public float getUtok(Zbran zbran){
-		return zbran.setUtok();
+	public float[] getStaty(Predmet predmet){
+		float[] policko = predmet.vratStaty();
+		return policko;
 	}
 	
+	public float[] statyPostavy(){
+		this.sila += this.getStaty(slot1)[3] + this.getStaty(slot2)[3];
+		this.inteligence += this.getStaty(slot1)[2] + this.getStaty(slot2)[2];
+		this.utok = this.getStaty(slot1)[0] + this.inteligence + this.getStaty(slot1)[2];
+		this.obrana = this.getStaty(slot2)[1]; 
+		float[] poleStatu = {sila, inteligence, utok, obrana};
+		return poleStatu;
+		
+	}
 	
 	public String aktivujQuest(Ukol ukol){
 		if (ukol.vratEnergii() > this.energie){
@@ -141,6 +165,11 @@ public abstract class Postava implements PostavaRozhrani{
 		this.level += 1;
 		this.exp = 0;
 		return (this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level);
+	}
+	
+	public Predmet bezSlot(){
+		Predmet nic = new Nic("NIC!");
+		return nic;
 	}
 }
 

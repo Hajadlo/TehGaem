@@ -20,7 +20,9 @@ public abstract class Postava implements PostavaRozhrani{
 
 	
 	protected float sila;
+	protected float baseSila;
 	protected float inteligence;
+	protected float baseInt;
 	protected float utok;
 	protected float obrana;
 	
@@ -34,6 +36,7 @@ public abstract class Postava implements PostavaRozhrani{
 	protected Predmet slot2;
 	
 	float[] policko = new float[4];
+	float[] poleStatu = new float[4];
 	
 	public Postava(String jmeno){
 		this.id +=1;
@@ -45,26 +48,13 @@ public abstract class Postava implements PostavaRozhrani{
 		
 		slot1 = this.bezSlot();
 		slot2 = this.bezSlot();
-		
-		this.sila += this.statyPredmetu(slot1)[3] + this.statyPredmetu(slot2)[3];
-		this.inteligence += this.statyPredmetu(slot1)[2] + this.statyPredmetu(slot2)[2];
-		if (this.povolani == "Kouzelnik"){
-			this.utok += this.statyPredmetu(slot1)[0] + this.inteligence;
-		}
-		else{
-			this.utok += this.statyPredmetu(slot1)[0] + this.sila;
-		}
-		this.obrana += this.statyPredmetu(slot2)[1];
-		
-		
-		
 	}
 	
 	
 	public void boj(Postava nepritel) {
-		System.out.println(this.jmeno + " utok: " + this.utok);
-		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
-		if ((this.utok) > nepritel.obrana){
+		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[0]));
+		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.statyPostavy()[1]);
+		if ((this.statyPostavy()[0]) > nepritel.statyPostavy()[1]){
 			this.zivoty -= 1;
 			this.zlataky += 1;
 			this.exp += 1;
@@ -83,7 +73,7 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	
 	public void boj(Kreatura nepritel) {
-		System.out.println(this.jmeno + " utok: " + this.utok);
+		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[0]));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
 		if ((this.statyPostavy()[0]) > nepritel.obrana){
 			this.zivoty -= 1;
@@ -118,8 +108,8 @@ public abstract class Postava implements PostavaRozhrani{
 	public String info(){
 		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
 				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
-				+ this.energie + "\n" + "Sila: " + this.utok + "\nInteligence: " + this.obrana
-				+ "\n" + "Utok: " + this.utok + "\nObrana: " + this.obrana + "\nPredmety: " + slot1.vratNazev() + ", " + slot2.vratNazev());
+				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
+				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " + slot1.vratNazev() + ", " + slot2.vratNazev());
 	}
 	
 	
@@ -150,13 +140,22 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	
-	public float[] statyPredmetu(Predmet predmet){
+	public float[] getStaty(Predmet predmet){
 		float[] policko = predmet.vratStaty();
 		return policko;
 	}
 	
 	public float[] statyPostavy(){
-		float[] poleStatu = {sila, inteligence, utok, obrana};
+		this.sila = this.getStaty(slot1)[3] + this.getStaty(slot2)[3] + this.baseSila;
+		this.inteligence = this.getStaty(slot1)[2] + this.getStaty(slot2)[2] + this.baseInt;
+		if (this.povolani == "Kouzelnik"){
+			this.utok = this.getStaty(slot1)[0] + this.inteligence;
+		}
+		else{
+			this.utok = this.getStaty(slot1)[0] + this.sila;
+		}
+		this.obrana = this.getStaty(slot2)[1]; 
+		float[] poleStatu = {this.sila, this.inteligence, this.utok, this.obrana};
 		return poleStatu;
 		
 	}

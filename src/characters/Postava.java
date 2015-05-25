@@ -113,9 +113,9 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	
-	public String getPredmet(Predmet predmet){
+	public void getPredmet(Predmet predmet){
 		if (predmet.vratCenu() > this.zlataky){
-			return "Nemate dost zlata";
+			System.out.println(this.jmeno + " nema dost zlata\n");
 		}
 		this.zlataky -= predmet.vratCenu();
 		this.predmety.add(predmet);
@@ -126,7 +126,7 @@ public abstract class Postava implements PostavaRozhrani{
 		else{
 			slot2 = predmet;
 		}
-		return "Uspesne jste koupil " + predmet.vratNazev();
+		System.out.println(this.jmeno + " si koupil " + predmet.vratNazev() + "\n");
 	}
 	
 	

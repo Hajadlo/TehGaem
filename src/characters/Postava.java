@@ -45,11 +45,24 @@ public abstract class Postava implements PostavaRozhrani{
 		
 		slot1 = this.bezSlot();
 		slot2 = this.bezSlot();
+		
+		this.sila += this.statyPredmetu(slot1)[3] + this.statyPredmetu(slot2)[3];
+		this.inteligence += this.statyPredmetu(slot1)[2] + this.statyPredmetu(slot2)[2];
+		if (this.povolani == "Kouzelnik"){
+			this.utok += this.statyPredmetu(slot1)[0] + this.inteligence;
+		}
+		else{
+			this.utok += this.statyPredmetu(slot1)[0] + this.sila;
+		}
+		this.obrana += this.statyPredmetu(slot2)[1];
+		
+		
+		
 	}
 	
 	
 	public void boj(Postava nepritel) {
-		System.out.println(this.jmeno + " utok: " + (this.utok));
+		System.out.println(this.jmeno + " utok: " + this.utok);
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
 		if ((this.utok) > nepritel.obrana){
 			this.zivoty -= 1;
@@ -70,9 +83,9 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	
 	public void boj(Kreatura nepritel) {
-		System.out.println(this.jmeno + " utok: " + (this.utok));
+		System.out.println(this.jmeno + " utok: " + this.utok);
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
-		if ((this.utok) > nepritel.obrana){
+		if ((this.statyPostavy()[0]) > nepritel.obrana){
 			this.zivoty -= 1;
 			this.zlataky += 1;
 			this.exp += 1;
@@ -105,8 +118,8 @@ public abstract class Postava implements PostavaRozhrani{
 	public String info(){
 		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
 				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
-				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
-				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " + slot1.vratNazev() + ", " + slot2.vratNazev());
+				+ this.energie + "\n" + "Sila: " + this.utok + "\nInteligence: " + this.obrana
+				+ "\n" + "Utok: " + this.utok + "\nObrana: " + this.obrana + "\nPredmety: " + slot1.vratNazev() + ", " + slot2.vratNazev());
 	}
 	
 	
@@ -137,16 +150,12 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	
-	public float[] getStaty(Predmet predmet){
+	public float[] statyPredmetu(Predmet predmet){
 		float[] policko = predmet.vratStaty();
 		return policko;
 	}
 	
 	public float[] statyPostavy(){
-		this.sila += this.getStaty(slot1)[3] + this.getStaty(slot2)[3];
-		this.inteligence += this.getStaty(slot1)[2] + this.getStaty(slot2)[2];
-		this.utok = this.getStaty(slot1)[0] + this.inteligence + this.getStaty(slot1)[2];
-		this.obrana = this.getStaty(slot2)[1]; 
 		float[] poleStatu = {sila, inteligence, utok, obrana};
 		return poleStatu;
 		

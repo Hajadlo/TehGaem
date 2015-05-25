@@ -22,8 +22,14 @@ public class Menu {
 		Predmet hulka = new Hul("Hulka cool veci");
 		Predmet kape = new Kape("Kape cool veci");
 		
+		Predmet mecak = new Mec("Frostfang");
+		Predmet krouzkovka = new Platovka("Nevim");
+		
 		magic.getPredmet(hulka);
 		magic.getPredmet(kape);
+		
+		typek.getPredmet(mecak);
+		typek.getPredmet(krouzkovka);
 
 		typek.boj(magic);
 		typek.boj(magic);

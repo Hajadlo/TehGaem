@@ -18,7 +18,6 @@ public abstract class Postava implements PostavaRozhrani{
 	protected int energie;
 	
 
-	
 	protected float sila;
 	protected float baseSila;
 	protected float inteligence;
@@ -52,9 +51,9 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	
 	public void boj(Postava nepritel) {
-		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[0]));
-		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.statyPostavy()[1]);
-		if ((this.statyPostavy()[0]) > nepritel.statyPostavy()[1]){
+		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[2]));
+		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.statyPostavy()[3]);
+		if ((this.statyPostavy()[2]) > nepritel.statyPostavy()[3]){
 			this.zivoty -= 1;
 			this.zlataky += 1;
 			this.exp += 1;
@@ -73,7 +72,7 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	
 	public void boj(Kreatura nepritel) {
-		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[0]));
+		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[2]));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
 		if ((this.statyPostavy()[0]) > nepritel.obrana){
 			this.zivoty -= 1;
@@ -106,10 +105,11 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	
 	public String info(){
-		return (this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
+		return ("\n" + this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
 				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
 				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
-				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " + slot1.vratNazev() + ", " + slot2.vratNazev());
+				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " 
+				+ slot1.vratNazev() + ", " + slot2.vratNazev()) +"\n";
 	}
 	
 	

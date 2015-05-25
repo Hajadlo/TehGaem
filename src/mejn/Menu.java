@@ -11,7 +11,7 @@ public class Menu {
 		Postava typek = new Rytir("Konan");
 		Postava magic = new Kouzelnik("Mrakoplas");
 		
-		Kreatura kentaur = new Kreatura("vórèíf", 10, 15);
+		Kreatura kentaur = new Kreatura("Vórèíf", 10, 15);
 		
 		typek.boj(kentaur);
 		magic.boj(kentaur);

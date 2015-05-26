@@ -7,8 +7,7 @@ import quest.Ukol;
 
 public class Menu {
 
-	public static void main(String[] args) {		
-		
+	public static void main(String[] args) {
 		
 		Ukol prvni = new Ukol("Za horami", 5, 3);
 		Ukol druhy = new Ukol("Blbustka", 8, 5);
@@ -29,11 +28,11 @@ public class Menu {
 		Kreatura zaba = new Kreatura("Zabak Rabak", 10);
 		
 		
-		typek.boj(kentaur);
-		magic.boj(kentaur);
+		System.out.println(typek.boj(kentaur));
+		System.out.println(magic.boj(kentaur));
 		
-		typek.boj(magic);
-		magic.boj(typek);
+		System.out.println(typek.boj(magic));
+		System.out.println(magic.boj(typek));
 		
 		Predmet hulka = new Hul("Hulka cool veci");
 		Predmet kape = new Kape("Kape cool veci");

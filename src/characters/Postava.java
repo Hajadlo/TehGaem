@@ -50,32 +50,41 @@ public abstract class Postava implements PostavaRozhrani{
 	public String boj(Postava nepritel) {
 		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[2]));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.statyPostavy()[3]);
+		
 		if ((this.statyPostavy()[2]) > nepritel.statyPostavy()[3]){
 			if (nepritel.level > this.level){
 				this.zivoty -= this.level;
-				this.zlataky += nepritel.level - (this.level + 1);
-				this.exp += (nepritel.level + 1) - this.level;
-				nepritel.zivoty -= (nepritel.level + 1) - this.level;
+				this.zlataky += nepritel.level;
+				this.exp += nepritel.level;
+				nepritel.zivoty -= this.level;
 			}
+			
 			else {
-				this.exp += (this.level + 1) - nepritel.level;
-				nepritel.zivoty -= (this.level + 1) - nepritel.level;
+				this.zivoty -= this.level;
+				this.exp += this.level;
+				nepritel.zivoty -= nepritel.level;
 			}
+			
 			return ("Porazil jsem " + nepritel.jmeno + "\n");
 		}
+		
+		
 		else{
+			
 			if (nepritel.level > this.level){
-				this.zivoty -= nepritel.level - this.level;
-				this.zlataky -= nepritel.level - this.level;
-				nepritel.zivoty -= (nepritel.level + 1) - this.level;
-				nepritel.zlataky += nepritel.level - this.level;
+				this.zivoty -= this.level;
+				this.zlataky -= this.level;
+				nepritel.zivoty -= nepritel.level;
+				nepritel.zlataky += this.level;
 			}
+			
 			else{
-				this.zivoty -= this.level - nepritel.level;
-				this.zlataky -= this.level - nepritel.level;
-				nepritel.zivoty -= (this.level + 1) - nepritel.level;
-				nepritel.zlataky += this.level - nepritel.level;
+				this.zivoty -= nepritel.level;
+				this.zlataky -= nepritel.level;
+				nepritel.zivoty -= nepritel.level;
+				nepritel.zlataky += this.level;
 			}
+			
 			return ("Porazil mì " + nepritel.jmeno + "\n");
 		}
 	}
@@ -84,7 +93,7 @@ public abstract class Postava implements PostavaRozhrani{
 	public String boj(Kreatura nepritel) {
 		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[2]));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
-		if ((this.statyPostavy()[0]) > nepritel.obrana){
+		if ((this.statyPostavy()[2]) > nepritel.obrana){
 			this.zivoty -= this.level;
 			this.zlataky += this.level;
 			this.exp += this.level;
@@ -148,11 +157,12 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	public String aktivujQuest(Ukol ukol, Kreatura nepritel){
 		System.out.println(this.jmeno + " se vydal na ukol: " + ukol.nazev);
+		System.out.println(this.jmeno + " narazil na " + nepritel.jmeno);
 		if (ukol.vratEnergii() >= this.energie){
 			return (this.jmeno + " ma moc malo energie.");
 		}
 		
-		System.out.println(this.jmeno + " narazil na " + nepritel.jmeno);
+		
 		
 		boj(nepritel);
 		

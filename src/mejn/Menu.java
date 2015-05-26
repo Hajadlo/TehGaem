@@ -1,13 +1,15 @@
 package mejn;
 
+import java.util.Random;
+
 import creature.Kreatura;
 import characters.*;
 import predmety.*;
 import quest.Ukol;
 
 public class Menu {
-
-	public static void main(String[] args) {
+	
+	public static Ukol getUkol(){
 		
 		Ukol prvni = new Ukol("Za horami", 5, 3);
 		Ukol druhy = new Ukol("Blbustka", 8, 5);
@@ -17,19 +19,32 @@ public class Menu {
 		Ukol sesty = new Ukol("Za horami", 3, 2);
 		
 		Ukol[] ukoly = {prvni, druhy, treti, ctvrty, paty, sesty};
+		Ukol randomQ = (ukoly[new Random().nextInt(ukoly.length)]);
+		return randomQ;
+	}
+	
+	public static Kreatura getKreatura(){
+		Kreatura kentaur = new Kreatura("Vórèíf", 15);
+		Kreatura ogr = new Kreatura("Ogre", 25);
+		Kreatura zaba = new Kreatura("Zabak Rabak", 10);
+		
+		Kreatura[] kreaturky = {kentaur, ogr, zaba};
+		Kreatura randomC = (kreaturky[new Random().nextInt(kreaturky.length)]);
+		return randomC;
+	}
+
+	public static void main(String[] args) {
 		
 		
 		
 		Postava typek = new Rytir("Konan");
 		Postava magic = new Kouzelnik("Mrakoplas");
 		
-		Kreatura kentaur = new Kreatura("Vórèíf", 15);
-		Kreatura ogr = new Kreatura("Ogre", 25);
-		Kreatura zaba = new Kreatura("Zabak Rabak", 10);
 		
 		
-		System.out.println(typek.boj(kentaur));
-		System.out.println(magic.boj(kentaur));
+		
+		System.out.println(typek.boj(getKreatura()));
+		System.out.println(magic.boj(getKreatura()));
 		
 		System.out.println(typek.boj(magic));
 		System.out.println(magic.boj(typek));
@@ -60,10 +75,10 @@ public class Menu {
 		magic.levelUP();
 		magic.levelUP();
 		
-		System.out.println(typek.aktivujQuest(prvni, kentaur));
-		System.out.println(magic.aktivujQuest(druhy, zaba));
-		System.out.println(magic.aktivujQuest(treti, ogr));
-		System.out.println(magic.aktivujQuest(ctvrty, zaba));
+		System.out.println(typek.aktivujQuest(getUkol(), getKreatura()));
+		System.out.println(magic.aktivujQuest(getUkol(), getKreatura()));
+		System.out.println(magic.aktivujQuest(getUkol(), getKreatura()));
+		System.out.println(magic.aktivujQuest(getUkol(), getKreatura()));
 		
 		System.out.println(magic.info());
 	}

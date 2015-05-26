@@ -3,9 +3,9 @@ package quest;
 public class Ukol {
 	public String nazev;
 	protected int potrebnaEnergie;
-	public float odmena;
+	public int odmena;
 	
-	public Ukol(String nazev, int potrebnaEnergie, float odmena){
+	public Ukol(String nazev, int potrebnaEnergie, int odmena){
 		this.nazev = nazev;
 		this.potrebnaEnergie = potrebnaEnergie;
 		this.odmena = odmena;

@@ -50,9 +50,9 @@ public class Menu {
 		typek.getPredmet(krouzkovka);
 
 		
-		magic.boj(typek);
-		typek.boj(magic);
-		typek.boj(magic);
+		System.out.println(magic.boj(typek));
+		System.out.println(typek.boj(magic));
+		System.out.println(typek.boj(magic));
 		typek.doleceni(3);
 		
 		System.out.println(magic.info());
@@ -61,8 +61,11 @@ public class Menu {
 		magic.levelUP();
 		magic.levelUP();
 		
-		typek.aktivujQuest(prvni, kentaur);
-		magic.aktivujQuest(druhy, zaba);
-		magic.aktivujQuest(treti, ogr);
+		System.out.println(typek.aktivujQuest(prvni, kentaur));
+		System.out.println(magic.aktivujQuest(druhy, zaba));
+		System.out.println(magic.aktivujQuest(treti, ogr));
+		System.out.println(magic.aktivujQuest(ctvrty, zaba));
+		
+		System.out.println(magic.info());
 	}
 }

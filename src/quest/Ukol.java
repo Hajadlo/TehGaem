@@ -16,7 +16,7 @@ public class Ukol {
 	public int vratEnergii(){
 		return this.potrebnaEnergie;
 	}
-	public Ukol setUkol(){
+	public static Ukol setUkol(){
 		
 		Ukol prvni = new Ukol("Za horami", 5, 3);
 		Ukol druhy = new Ukol("Blbustka", 8, 5);

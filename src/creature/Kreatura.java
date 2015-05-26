@@ -12,7 +12,7 @@ public class Kreatura {
 		this.obrana = obrana;
 	}
 	
-	public Kreatura setKreatura(){
+	public static Kreatura setKreatura(){
 		Kreatura kentaur = new Kreatura("Vórèíf", 15);
 		Kreatura ogr = new Kreatura("Ogre", 25);
 		Kreatura zaba = new Kreatura("Zabak Rabak", 10);

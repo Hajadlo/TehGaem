@@ -10,41 +10,36 @@ public class Menu {
 	public static void main(String[] args) {
 		
 		
+		System.out.println(Postava.setPostava(0).boj(Kreatura.setKreatura()));
+		System.out.println(Postava.setPostava(1).boj(Kreatura.setKreatura()));
 		
-		Postava typek = new Rytir("Konan");
-		Postava magic = new Kouzelnik("Mrakoplas");
+		System.out.println(Postava.setPostava(0).boj(Postava.setPostava(1)));
+		System.out.println(Postava.setPostava(1).boj(Postava.setPostava(0)));
 		
-		//System.out.println(typek.boj(getKreatura()));
-		//System.out.println(magic.boj(getKreatura()));
+		Postava.setPostava(0).getPredmet(Predmet.setPredmet());
+		Postava.setPostava(0).getPredmet(Predmet.setPredmet());
 		
-		System.out.println(typek.boj(magic));
-		System.out.println(magic.boj(typek));
-		
-		magic.getPredmet(Predmet.setPredmet());
-		magic.getPredmet(Predmet.setPredmet());
-		
-		typek.getPredmet(Predmet.setPredmet());
-		typek.getPredmet(Predmet.setPredmet());
+		Postava.setPostava(1).getPredmet(Predmet.setPredmet());
+		Postava.setPostava(1).getPredmet(Predmet.setPredmet());
 
 		
-		System.out.println(magic.boj(typek));
-		System.out.println(typek.boj(magic));
-		System.out.println(typek.boj(magic));
-		typek.doleceni(3);
+		System.out.println(Postava.setPostava(0).boj(Postava.setPostava(1)));
+		System.out.println(Postava.setPostava(1).boj(Postava.setPostava(0)));
+		Postava.setPostava(0).doleceni(3);
 		
-		System.out.println(magic.info());
-		System.out.println(typek.info());
+		System.out.println(Postava.setPostava(0).info());
+		System.out.println(Postava.setPostava(1).info());
 		
-		magic.levelUP();
-		magic.levelUP();
+		Postava.setPostava(0).levelUP();
+		Postava.setPostava(1).levelUP();
 		
-		//System.out.println(typek.aktivujQuest();
-		//System.out.println(magic.aktivujQuest();
-		//System.out.println(magic.aktivujQuest();
-		//System.out.println(magic.aktivujQuest();
+		System.out.println(Postava.setPostava(0).aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
+		System.out.println(Postava.setPostava(0).aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
+		System.out.println(Postava.setPostava(1).aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
+		System.out.println(Postava.setPostava(1).aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
 		
-		System.out.println(magic.info());
+		System.out.println(Postava.setPostava(0).info());
 		
-		System.out.println(magic.inventar());
+		System.out.println(Postava.setPostava(0).inventar());
 	}
 }

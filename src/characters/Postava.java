@@ -7,6 +7,7 @@ import creature.Kreatura;
 import predmety.*;
 
 public abstract class Postava implements PostavaRozhrani{
+	public static int id;
 	protected String jmeno;
 	protected String povolani;
 			//Zitra vyresit randomovani questu a inventar
@@ -36,6 +37,7 @@ public abstract class Postava implements PostavaRozhrani{
 	float[] poleStatu = new float[4];
 	
 	public Postava(String jmeno){
+		id++;
 		this.jmeno = jmeno;
 		this.zlataky = 20;
 		this.level = 1;
@@ -44,6 +46,14 @@ public abstract class Postava implements PostavaRozhrani{
 		
 		slot1 = this.bezSlot();
 		slot2 = this.bezSlot();
+	}
+	
+	public static Postava setPostava(int index){
+		Postava typek = new Rytir("Konan");
+		Postava magic = new Kouzelnik("Mrakoplas");
+		
+		Postava[] postavy = {typek, magic};
+		return postavy[index];
 	}
 	
 	

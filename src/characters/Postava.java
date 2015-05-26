@@ -6,11 +6,17 @@ import quest.*;
 import creature.Kreatura;
 import predmety.*;
 
+
+
+//Problemy s infem a setPostava obecne, snad jsi to neposral... kdyztak to nahraj zpet z githubu
+
+
+
 public abstract class Postava implements PostavaRozhrani{
 	public static int id;
 	protected String jmeno;
 	protected String povolani;
-			//Zitra vyresit randomovani questu a inventar
+
 	protected int zivoty;
 	protected int maxHP;
 	protected int zlataky;

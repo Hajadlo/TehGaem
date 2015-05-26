@@ -35,13 +35,8 @@ public class Menu {
 
 	public static void main(String[] args) {
 		
-		
-		
 		Postava typek = new Rytir("Konan");
 		Postava magic = new Kouzelnik("Mrakoplas");
-		
-		
-		
 		
 		System.out.println(typek.boj(getKreatura()));
 		System.out.println(magic.boj(getKreatura()));

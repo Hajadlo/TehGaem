@@ -9,10 +9,10 @@ import predmety.*;
 public abstract class Postava implements PostavaRozhrani{
 	protected String jmeno;
 	protected String povolani;
-	
+			//Dneska vyresit questy nebo levelovani regenerace energie
 	protected int zivoty;
 	protected int maxHP;
-	protected int zlataky;          //Dneska vyresit questy nebo levelovani
+	protected int zlataky;
 	public int level;
 	protected int exp;
 	protected int energie;

@@ -4,7 +4,7 @@ package predmety;
 public class Mec extends Zbran{
 	public Mec(String nazev) {
 		super(nazev);
-		this.mageOnly = true;
+		this.proPovolani = "Rytir";
 		this.utok = 15;
 		this.obrana = 0;
 		this.bonusStr = 10;

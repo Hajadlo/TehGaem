@@ -1,5 +1,7 @@
 package predmety;
 
+import java.util.Random;
+
 public abstract class Predmet implements PredmetRozhrani{
 	protected String nazev;
 	
@@ -11,7 +13,7 @@ public abstract class Predmet implements PredmetRozhrani{
 	protected float bonusInt;
 	protected float bonusStr;
 	
-	protected boolean mageOnly;
+	public String proPovolani;
 	
 	public Predmet(String nazev){
 		this.nazev = nazev;
@@ -36,5 +38,15 @@ public abstract class Predmet implements PredmetRozhrani{
 	public int vratSlot(){
 		return this.slot;
 	}
-
+	
+	public static Predmet setPredmet(){
+		Predmet hulka = new Hul("Cool hulka");
+		Predmet kape = new Kape("Cool kape");
+		Predmet mecak = new Mec("Cool mecak");
+		Predmet krouzkovka = new Platovka("Cool Platovka");
+		
+		Predmet[] predmety = {hulka, kape, mecak, krouzkovka};
+		Predmet randomItem = (predmety[new Random().nextInt(predmety.length)]);
+		return randomItem;
+	}
 }

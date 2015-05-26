@@ -9,7 +9,7 @@ import predmety.*;
 public abstract class Postava implements PostavaRozhrani{
 	protected String jmeno;
 	protected String povolani;
-			//Dneska vyresit questy nebo levelovani regenerace energie
+			//Zitra vyresit randomovani questu a inventar
 	protected int zivoty;
 	protected int maxHP;
 	protected int zlataky;
@@ -123,19 +123,19 @@ public abstract class Postava implements PostavaRozhrani{
 	}	
 	
 	public void getPredmet(Predmet predmet){
-		if (predmet.vratCenu() > this.zlataky){
-			System.out.println(this.jmeno + " nema dost zlata\n");
-		}
-		this.zlataky -= predmet.vratCenu();
-		this.predmety.add(predmet);
-		
-		if (predmet.vratSlot() == 1){
+		if (predmet.vratSlot() == 1 && (this.povolani == predmet.proPovolani || predmet.proPovolani == "Oboje")){
 			slot1 = predmet;
+			System.out.println(predmet.vratNazev() + " byl pridan jako zbran");
+		}
+		else if(predmet.vratSlot() == 2 && (this.povolani == predmet.proPovolani || predmet.proPovolani == "Oboje")){
+			slot2 = predmet;
+			System.out.println(predmet.vratNazev() + " byl pridan jako brneni");
 		}
 		else{
-			slot2 = predmet;
+			this.predmety.add(predmet);
+			System.out.println("Predmet " + predmet.vratNazev() + " nejde pouzivat " + this.jmeno + " a proto se ulozil do inventare");
 		}
-		System.out.println(this.jmeno + " si koupil " + predmet.vratNazev() + "\n");
+		System.out.println(this.jmeno + " nasel " + predmet.vratNazev() + "\n");
 	}
 	
 
@@ -161,9 +161,6 @@ public abstract class Postava implements PostavaRozhrani{
 		if (ukol.vratEnergii() >= this.energie){
 			return (this.jmeno + " ma moc malo energie.\n");
 		}
-		
-		
-		
 		boj(nepritel);
 		
 		this.zlataky += this.level * ukol.odmena;
@@ -205,6 +202,14 @@ public abstract class Postava implements PostavaRozhrani{
 				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
 				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " 
 				+ slot1.vratNazev() + ", " + slot2.vratNazev()) +"\n";
+	}
+	
+	public String inventar(){
+		String itemky = "";
+		for (Predmet i : predmety){
+			itemky += i + ", ";
+		}
+		return itemky;
 	}
 }
 

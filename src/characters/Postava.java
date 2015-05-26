@@ -12,7 +12,7 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	protected int zivoty;
 	protected int maxHP;
-	protected int zlataky;
+	protected int zlataky;          //Dneska vyresit questy nebo levelovani
 	public int level;
 	protected int exp;
 	protected int energie;
@@ -25,9 +25,7 @@ public abstract class Postava implements PostavaRozhrani{
 	protected float utok;
 	protected float obrana;
 	
-	protected boolean aktivniQ;
 
-	protected int id;
 	
 	protected ArrayList<Predmet> predmety = new ArrayList<Predmet>();
 	
@@ -38,7 +36,6 @@ public abstract class Postava implements PostavaRozhrani{
 	float[] poleStatu = new float[4];
 	
 	public Postava(String jmeno){
-		this.id +=1;
 		this.jmeno = jmeno;
 		this.zlataky = 20;
 		this.level = 1;
@@ -54,18 +51,25 @@ public abstract class Postava implements PostavaRozhrani{
 		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[2]));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.statyPostavy()[3]);
 		if ((this.statyPostavy()[2]) > nepritel.statyPostavy()[3]){
-			this.zivoty -= 1;
-			this.zlataky += 1;
-			this.exp += 1;
-			nepritel.zivoty -= 1;
-			nepritel.zlataky -= 1;
+			if (nepritel.level > this.level){
+				this.zivoty -= this.level;
+				this.zlataky += nepritel.level - this.level + 1;
+				this.exp += nepritel.level - this.level;
+				nepritel.zivoty -= nepritel.level - this.level;
+			}
+			else {
+				this.exp += this.level - nepritel.level + 1;
+				nepritel.zivoty -= this.level - nepritel.level + -1;
+			}
 			System.out.println("Porazil jsem " + nepritel.jmeno + "\n");
 		}
 		else{
-			this.zivoty -=1;
-			this.zlataky -=1;
-			nepritel.zivoty -= 1;
-			nepritel.zlataky += 1;
+			if (nepritel.level > this.level){
+				this.zivoty -= nepritel.level - this.level;
+				this.zlataky -= nepritel.level - this.level;
+				nepritel.zivoty -= nepritel.level - this.level;
+				nepritel.zlataky += nepritel.level - this.level;
+			}
 			System.out.println("Porazil mì " + nepritel.jmeno + "\n");
 		}
 	}
@@ -75,15 +79,16 @@ public abstract class Postava implements PostavaRozhrani{
 		System.out.println(this.jmeno + " utok: " + (this.statyPostavy()[2]));
 		System.out.println("Obrane cislo " + nepritel.jmeno + " je: " + nepritel.obrana);
 		if ((this.statyPostavy()[0]) > nepritel.obrana){
-			this.zivoty -= 1;
-			this.zlataky += 1;
-			this.exp += 1;
+			this.zivoty -= this.level;
+			this.zlataky += this.level;
+			this.exp += this.level;
 			System.out.println("Porazil jsem " + nepritel.jmeno + "\n");
 		}
 		else{
-			this.zivoty -=1;
-			this.zlataky -=1;
+			this.zivoty -= nepritel.obrana - this.utok;
+			this.zlataky -= this.level;
 			System.out.println("Porazil mì " + nepritel.jmeno + "\n");
+			
 		}
 	}
 	
@@ -101,17 +106,7 @@ public abstract class Postava implements PostavaRozhrani{
 		this.zivoty += zlataky;
 		System.out.println(this.jmeno + " byl dolecen o " + zlataky + " na " + (this.zivoty));
 		return this.zivoty;
-	}
-	
-	
-	public String info(){
-		return ("\n" + this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
-				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
-				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
-				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " 
-				+ slot1.vratNazev() + ", " + slot2.vratNazev()) +"\n";
-	}
-	
+	}	
 	
 	public void getPredmet(Predmet predmet){
 		if (predmet.vratCenu() > this.zlataky){
@@ -129,21 +124,7 @@ public abstract class Postava implements PostavaRozhrani{
 		System.out.println(this.jmeno + " si koupil " + predmet.vratNazev() + "\n");
 	}
 	
-	
-	public Predmet getslot1(){
-		return slot1;
-	}
-	
-	
-	public Predmet getslot2(){
-		return slot2;
-	}
-	
-	
-	public float[] getStaty(Predmet predmet){
-		float[] policko = predmet.vratStaty();
-		return policko;
-	}
+
 	
 	public float[] statyPostavy(){
 		this.sila = this.getStaty(slot1)[3] + this.getStaty(slot2)[3] + this.baseSila;
@@ -160,25 +141,55 @@ public abstract class Postava implements PostavaRozhrani{
 		
 	}
 	
-	public String aktivujQuest(Ukol ukol){
+	public void aktivujQuest(Ukol ukol, Kreatura nepritel){
+		System.out.println(this.jmeno + " se vydal na ukol: " + ukol.nazev);
 		if (ukol.vratEnergii() > this.energie){
-			return (this.jmeno + " ma moc malo energie.");
+			System.out.println(this.jmeno + " ma moc malo energie.");
 		}
-		this.aktivniQ = true;
-		return (this.jmeno + " se vypravil na ukol a ziskal " + ukol.vratExpy());
+		
+		System.out.println(this.jmeno + " narazil na " + nepritel.jmeno);
+		
+		boj(nepritel);
+		
+		this.zlataky *= ukol.odmena;
+		this.exp *= ukol.odmena;
+		
+		this.energie -= ukol.vratEnergii();		
+		System.out.println(this.jmeno + " se vypravil na ukol a ziskal " + (this.level * ukol.odmena) + " zkusenosti a ztratil " + ukol.vratEnergii() + " energie\n");
 	}
 	
 	
-	public String levelUP(Postava postava){
+	public void levelUP(){
 		this.level += 1;
 		this.exp = 0;
-		return (this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level);
+		System.out.println(this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level);
+	}
+	
+	public float[] getStaty(Predmet predmet){
+		float[] policko = predmet.vratStaty();
+		return policko;
 	}
 	
 	public Predmet bezSlot(){
 		Predmet nic = new Nic("NIC!");
 		return nic;
 	}
-}
+	
+	public Predmet getslot1(){
+		return slot1;
+	}
 
+
+	public Predmet getslot2(){
+		return slot2;
+	}
+	
+	public String info(){
+		return ("\n" + this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
+				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
+				+ this.energie + "\n" + "Sila: " + this.statyPostavy()[0] + "\nInteligence: " + this.statyPostavy()[1]
+				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " 
+				+ slot1.vratNazev() + ", " + slot2.vratNazev()) +"\n";
+	}
+}
 

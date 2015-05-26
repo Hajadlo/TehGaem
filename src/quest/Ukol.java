@@ -1,22 +1,19 @@
 package quest;
-import characters.Postava;
 
 public class Ukol {
-	protected String nazev;
-	protected int pocetExp;
-	protected int obtiznost;
+	public String nazev;
 	protected int potrebnaEnergie;
+	public float odmena;
 	
-	public Ukol(Postava postava, String nazev){
-		this.potrebnaEnergie = postava.level;
-		this.pocetExp = postava.level;
+	public Ukol(String nazev, int potrebnaEnergie, float odmena){
+		this.nazev = nazev;
+		this.potrebnaEnergie = potrebnaEnergie;
+		this.odmena = odmena;
 	}
 	
 	public int vratEnergii(){
 		return this.potrebnaEnergie;
 	}
 	
-	public int vratExpy(){
-		return this.pocetExp;
-	}
+	
 }

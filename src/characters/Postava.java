@@ -149,8 +149,8 @@ public abstract class Postava implements PostavaRozhrani{
 		else{
 			this.utok = this.getStaty(slot1)[0] + this.sila;
 		}
-		this.obrana = this.getStaty(slot2)[1]; 
-		float[] poleStatu = {this.sila, this.inteligence, this.utok, this.obrana};
+		this.obrana = this.getStaty(slot2)[1];
+		float[] poleStatu = {this.sila, this.inteligence, this.utok, this.obrana, this.zivoty};
 		return poleStatu;
 		
 	}
@@ -159,7 +159,7 @@ public abstract class Postava implements PostavaRozhrani{
 		System.out.println(this.jmeno + " se vydal na ukol: " + ukol.nazev);
 		System.out.println(this.jmeno + " narazil na " + nepritel.jmeno);
 		if (ukol.vratEnergii() >= this.energie){
-			return (this.jmeno + " ma moc malo energie.");
+			return (this.jmeno + " ma moc malo energie.\n");
 		}
 		
 		

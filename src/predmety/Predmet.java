@@ -18,10 +18,6 @@ public abstract class Predmet implements PredmetRozhrani{
 	public Predmet(String nazev){
 		this.nazev = nazev;
 	}
-	
-	public void koupit(Predmet predmet){
-	}
-	
 	public float[] vratStaty(){
 		float[] staty = {this.utok, this.obrana, this.bonusInt, this.bonusStr};
 		return staty;

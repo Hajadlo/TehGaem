@@ -67,9 +67,7 @@ public abstract class Postava implements PostavaRozhrani{
 			return ("Porazil jsem " + nepritel.jmeno + "\n");
 		}
 		
-		
 		else{
-			
 			if (nepritel.level > this.level){
 				this.zivoty -= this.level;
 				this.zlataky -= this.level;
@@ -98,11 +96,9 @@ public abstract class Postava implements PostavaRozhrani{
 			this.exp += this.level;
 			return("Porazil jsem " + nepritel.jmeno + "\n");
 		}
-		else{
 			this.zivoty -= this.level;
 			this.zlataky -= this.level;
-			return ("Porazil mì " + nepritel.jmeno + "\n");
-		}
+			return ("Porazil me " + nepritel.jmeno + "\n");
 	}
 	
 	
@@ -121,20 +117,21 @@ public abstract class Postava implements PostavaRozhrani{
 		return this.zivoty;
 	}	
 	
-	public void getPredmet(Predmet predmet){
+	public String getPredmet(Predmet predmet){
+		System.out.println(this.jmeno + " nasel " + predmet.vratNazev());
 		if (predmet.vratSlot() == 1 && (this.povolani == predmet.proPovolani || predmet.proPovolani == "Oboje")){
 			slot1 = predmet;
-			System.out.println(predmet.vratNazev() + " byl pridan jako zbran");
+			return (predmet.vratNazev() + " byl pridan jako zbran\n");
 		}
 		else if(predmet.vratSlot() == 2 && (this.povolani == predmet.proPovolani || predmet.proPovolani == "Oboje")){
 			slot2 = predmet;
-			System.out.println(predmet.vratNazev() + " byl pridan jako brneni");
+			return (predmet.vratNazev() + " byl pridan jako brneni\n");
 		}
 		else{
 			this.predmety.add(predmet);
-			System.out.println("Predmet " + predmet.vratNazev() + " nejde pouzivat " + this.jmeno + " a proto se ulozil do inventare");
+			return ("Predmet " + predmet.vratNazev() + " nemuze pouzivat " + this.jmeno + ", a proto se ulozil do inventare\n");
 		}
-		System.out.println(this.jmeno + " nasel " + predmet.vratNazev() + "\n");
+		
 	}
 	
 
@@ -160,7 +157,7 @@ public abstract class Postava implements PostavaRozhrani{
 		if (ukol.vratEnergii() >= this.energie){
 			return (this.jmeno + " ma moc malo energie.\n");
 		}
-		boj(nepritel);
+		System.out.println(boj(nepritel));
 		
 		this.zlataky += this.level * ukol.odmena;
 		this.exp += this.level * ukol.odmena;
@@ -186,12 +183,12 @@ public abstract class Postava implements PostavaRozhrani{
 		return nic;
 	}
 	
-	public Predmet getslot1(){
+	public Predmet getSlot1(){
 		return slot1;
 	}
 
 
-	public Predmet getslot2(){
+	public Predmet getSlot2(){
 		return slot2;
 	}
 	

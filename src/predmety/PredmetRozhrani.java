@@ -1,6 +1,9 @@
 package predmety;
 
 public interface PredmetRozhrani {
-	void koupit(Predmet predmet);
 	float[] vratStaty();
+	int vratCenu();
+	String vratNazev();
+	int vratSlot();
+	//Predmet setPredmet();
 }

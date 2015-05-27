@@ -20,15 +20,14 @@ public class Menu {
 		System.out.println(typek.boj(magic));
 		System.out.println(magic.boj(typek));
 		
-		magic.getPredmet(Predmet.setPredmet());
-		magic.getPredmet(Predmet.setPredmet());
+		System.out.println(magic.getPredmet(Predmet.setPredmet()));
+		System.out.println(magic.getPredmet(Predmet.setPredmet()));
 		
-		typek.getPredmet(Predmet.setPredmet());
-		typek.getPredmet(Predmet.setPredmet());
+		System.out.println(typek.getPredmet(Predmet.setPredmet()));
+		System.out.println(typek.getPredmet(Predmet.setPredmet()));
 
 		
 		System.out.println(magic.boj(typek));
-		System.out.println(typek.boj(magic));
 		System.out.println(typek.boj(magic));
 		typek.doleceni(3);
 		
@@ -36,11 +35,9 @@ public class Menu {
 		System.out.println(typek.info());
 		
 		magic.levelUP();
-		magic.levelUP();
+		typek.levelUP();
 		
 		System.out.println(typek.aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
-		System.out.println(magic.aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
-		System.out.println(magic.aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
 		System.out.println(magic.aktivujQuest(Ukol.setUkol(), Kreatura.setKreatura()));
 		
 		System.out.println(magic.info());

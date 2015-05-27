@@ -181,6 +181,16 @@ public abstract class Postava implements PostavaRozhrani{
 		System.out.println(getPredmet(Predmet.setPredmet()));
 		return (this.jmeno + " se vypravil na ukol a ziskal " + (this.level * ukol.odmena) + " zkusenosti a ztratil " + ukol.vratEnergii() + " energie\n");
 	}
+	
+	public String pracuj(int hodin){
+		System.out.println(this.jmeno + " by si chtel pracovat " + hodin + " hodin");
+		if (hodin > this.energie){
+			return (this.jmeno + " nema dostatek energie na splneni prace");
+		}
+		this.zlataky += hodin*2;
+		this.energie -= hodin;
+		return (this.jmeno + " pracoval " + hodin + " hodiny, vydelal si " + (hodin*2) + " zlatych a ztratil " + hodin + " energie");
+	}
 		
 	
 	public void levelUP(){

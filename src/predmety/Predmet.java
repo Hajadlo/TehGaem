@@ -43,7 +43,7 @@ public abstract class Predmet implements PredmetRozhrani{
 		Predmet hulka = new Hul("Cool hulka");
 		Predmet kape = new Kape("Cool kape");
 		Predmet mecak = new Mec("Cool mecak");
-		Predmet krouzkovka = new Platovka("Cool Platovka");
+		Predmet krouzkovka = new Platovka("Cool platovka");
 		
 		Predmet[] predmety = {hulka, kape, mecak, krouzkovka};
 		Predmet randomItem = (predmety[new Random().nextInt(predmety.length)]);

@@ -6,17 +6,9 @@ import quest.*;
 import creature.Kreatura;
 import predmety.*;
 
-
-
-//Problemy s infem a setPostava obecne, snad jsi to neposral... kdyztak to nahraj zpet z githubu
-
-
-
 public abstract class Postava implements PostavaRozhrani{
-	public static int id;
 	protected String jmeno;
 	protected String povolani;
-
 	protected int zivoty;
 	protected int maxHP;
 	protected int zlataky;
@@ -43,7 +35,6 @@ public abstract class Postava implements PostavaRozhrani{
 	float[] poleStatu = new float[4];
 	
 	public Postava(String jmeno){
-		id++;
 		this.jmeno = jmeno;
 		this.zlataky = 20;
 		this.level = 1;
@@ -52,14 +43,6 @@ public abstract class Postava implements PostavaRozhrani{
 		
 		slot1 = this.bezSlot();
 		slot2 = this.bezSlot();
-	}
-	
-	public static Postava setPostava(int index){
-		Postava typek = new Rytir("Konan");
-		Postava magic = new Kouzelnik("Mrakoplas");
-		
-		Postava[] postavy = {typek, magic};
-		return postavy[index];
 	}
 	
 	
@@ -101,7 +84,7 @@ public abstract class Postava implements PostavaRozhrani{
 				nepritel.zlataky += this.level;
 			}
 			
-			return ("Porazil mì " + nepritel.jmeno + "\n");
+			return ("Porazil mÃ¬ " + nepritel.jmeno + "\n");
 		}
 	}
 	
@@ -118,7 +101,7 @@ public abstract class Postava implements PostavaRozhrani{
 		else{
 			this.zivoty -= this.level;
 			this.zlataky -= this.level;
-			return ("Porazil mì " + nepritel.jmeno + "\n");
+			return ("Porazil mÃ¬ " + nepritel.jmeno + "\n");
 		}
 	}
 	
@@ -223,9 +206,8 @@ public abstract class Postava implements PostavaRozhrani{
 	public String inventar(){
 		String itemky = "";
 		for (Predmet i : predmety){
-			itemky += i + ", ";
+			itemky += i.vratNazev() + " ";
 		}
 		return itemky;
 	}
 }
-

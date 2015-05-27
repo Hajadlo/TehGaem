@@ -175,7 +175,8 @@ public abstract class Postava implements PostavaRozhrani{
 		this.zlataky += this.level * ukol.odmena;
 		this.exp += this.level * ukol.odmena;
 		
-		this.energie -= ukol.vratEnergii();		
+		this.energie -= ukol.vratEnergii();
+		System.out.println(getPredmet(Predmet.setPredmet()));
 		return (this.jmeno + " se vypravil na ukol a ziskal " + (this.level * ukol.odmena) + " zkusenosti a ztratil " + ukol.vratEnergii() + " energie\n");
 	}
 		
@@ -183,7 +184,7 @@ public abstract class Postava implements PostavaRozhrani{
 	public void levelUP(){
 		this.level += 1;
 		this.exp = 0;
-		System.out.println(this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level);
+		System.out.println(this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level+"\n");
 	}
 	
 	public float[] getStaty(Predmet predmet){

@@ -2,9 +2,10 @@ package characters;
 
 import java.util.ArrayList;
 
-import quest.*;
+import predmety.Nic;
+import predmety.Predmet;
+import quest.Ukol;
 import creature.Kreatura;
-import predmety.*;
 
 public abstract class Postava implements PostavaRozhrani{
 	protected String jmeno;
@@ -149,7 +150,7 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 
 	
-	public float[] statyPostavy(){
+	public float[] statyPostavy(){  // 0 = sila, 1 = int, 2 = utok, 3 = obrana
 		this.sila = this.getStaty(slot1)[3] + this.getStaty(slot2)[3] + this.baseSila;
 		this.inteligence = this.getStaty(slot1)[2] + this.getStaty(slot2)[2] + this.baseInt;
 		if (this.povolani == "Kouzelnik"){

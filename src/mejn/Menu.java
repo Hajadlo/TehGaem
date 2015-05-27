@@ -1,15 +1,14 @@
 package mejn;
 
-import creature.Kreatura;
+import predmety.Predmet;
 import characters.*;
-import predmety.*;
+import creature.Kreatura;
 import quest.Ukol;
 
 public class Menu {
 
 	public static void main(String[] args) {
 		
-		// PRODEJ ITEMU
 		
 		Postava typek = new Rytir("Konan");
 		Postava magic = new Kouzelnik("Mrakoplas");

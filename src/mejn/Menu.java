@@ -9,7 +9,7 @@ public class Menu {
 
 	public static void main(String[] args) {
 		
-		// PRODEJ ITEMU A ODPOCINEK
+		// PRODEJ ITEMU
 		
 		Postava typek = new Rytir("Konan");
 		Postava magic = new Kouzelnik("Mrakoplas");
@@ -44,6 +44,6 @@ public class Menu {
 		
 		System.out.println(magic.inventar());
 		
-		System.out.println(magic.odpocinek(6));
+		System.out.println(magic.odpocinek(3));
 	}
 }

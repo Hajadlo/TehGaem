@@ -114,8 +114,10 @@ public abstract class Postava implements PostavaRozhrani{
 		return(this.jmeno + " byl dolecen o " + zlataky + " na " + (this.zivoty));
 	}	
 	
+	
 	public String odpocinek(int hodin){
-		if (hodin*2 > this.maxEnergie){
+		System.out.println(this.jmeno + " by si chtel odpocinout na " + hodin + " hodin");
+		if (hodin*2+this.energie > this.maxEnergie){
 			return (this.jmeno + " presahuje svoje maximum energie");
 		}
 		this.energie += hodin*2;
@@ -123,6 +125,7 @@ public abstract class Postava implements PostavaRozhrani{
 				+ "Aktualni energie: " + this.energie);
 		
 	}
+	
 	
 	public String getPredmet(Predmet predmet){
 		System.out.println(this.jmeno + " nasel " + predmet.vratNazev());
@@ -138,7 +141,11 @@ public abstract class Postava implements PostavaRozhrani{
 			this.predmety.add(predmet);
 			return ("Predmet " + predmet.vratNazev() + " nemuze pouzivat " + this.jmeno + ", a proto se ulozil do inventare\n");
 		}
+	}
+	
+	public String prodejItem(Predmet predmet){
 		
+		return (this.jmeno + " prodal" + predmet.vratNazev());
 	}
 
 	
@@ -171,9 +178,7 @@ public abstract class Postava implements PostavaRozhrani{
 		this.energie -= ukol.vratEnergii();		
 		return (this.jmeno + " se vypravil na ukol a ziskal " + (this.level * ukol.odmena) + " zkusenosti a ztratil " + ukol.vratEnergii() + " energie\n");
 	}
-	
-	
-	
+		
 	
 	public void levelUP(){
 		this.level += 1;

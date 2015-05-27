@@ -9,5 +9,6 @@ public class Platovka extends Brneni{
 		this.obrana = 15;
 		this.bonusStr = 10;
 		this.bonusInt = 0;
+		this.cena = 20;
 	}
 }

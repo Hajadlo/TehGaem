@@ -5,7 +5,7 @@ import characters.*;
 import creature.Kreatura;
 import quest.Ukol;
 
-public class Menu {
+public class Menu { // OPRAVIT PRODEJ ITEMU
 
 	public static void main(String[] args) {
 		
@@ -44,5 +44,7 @@ public class Menu {
 		System.out.println(magic.inventar());
 		
 		System.out.println(magic.odpocinek(3));
+		
+		System.out.println(typek.prodejItem(Predmet.setPredmet()));
 	}
 }

@@ -9,5 +9,6 @@ public class Mec extends Zbran{
 		this.obrana = 0;
 		this.bonusStr = 10;
 		this.bonusInt = 0;
+		this.cena = 10;
 	}
 }

@@ -8,6 +8,7 @@ public class Kape extends Brneni{
 		this.obrana = 10;
 		this.bonusInt = 15;
 		this.bonusStr = 0;
+		this.cena = 10;
 	}
 
 }

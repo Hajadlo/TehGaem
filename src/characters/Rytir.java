@@ -1,8 +1,5 @@
 package characters;
 
-import predmety.Predmet;
-
-
 public class Rytir extends Postava{
 	
 	public Rytir(String jmeno) {

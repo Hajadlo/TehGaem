@@ -9,7 +9,7 @@ public interface PostavaRozhrani{
 	
 	String boj(Postava nepritel);
 	String boj(Kreatura nepritel);
-	int doleceni(int zlataky);
+	String doleceni(int zlataky);
 	String getPredmet(Predmet predmet);
 	float[] statyPostavy();
 	String aktivujQuest(Ukol ukol, Kreatura nepritel);

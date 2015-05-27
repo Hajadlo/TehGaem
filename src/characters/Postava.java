@@ -15,6 +15,7 @@ public abstract class Postava implements PostavaRozhrani{
 	public int level;
 	protected int exp;
 	protected int energie;
+	protected int maxEnergie;
 	
 
 	protected float sila;
@@ -23,8 +24,6 @@ public abstract class Postava implements PostavaRozhrani{
 	protected float baseInt;
 	protected float utok;
 	protected float obrana;
-	
-
 	
 	protected ArrayList<Predmet> predmety = new ArrayList<Predmet>();
 	
@@ -40,6 +39,7 @@ public abstract class Postava implements PostavaRozhrani{
 		this.level = 1;
 		this.exp = 0;
 		this.energie = 20;
+		this.maxEnergie = 20;
 		
 		slot1 = this.bezSlot();
 		slot2 = this.bezSlot();
@@ -102,20 +102,27 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	
-	public int doleceni(int zlataky){
+	public String doleceni(int zlataky){
 		System.out.println(this.jmeno + " by se chtel vylecit z " + this.zivoty + " zivotu");
 		if (zlataky > this.zlataky){
-			System.out.println(this.jmeno + " nema dost penez");
-			return 0;
+			return (this.jmeno + " nema dost penez");
 		}
 		if ((this.zivoty + zlataky) > this.maxHP){
-			System.out.println(this.jmeno + " presahuje svoje maximum zivotu");
-			return 0;
+			return(this.jmeno + " presahuje svoje maximum zivotu");
 		}	
 		this.zivoty += zlataky;
-		System.out.println(this.jmeno + " byl dolecen o " + zlataky + " na " + (this.zivoty));
-		return this.zivoty;
+		return(this.jmeno + " byl dolecen o " + zlataky + " na " + (this.zivoty));
 	}	
+	
+	public String odpocinek(int hodin){
+		if (hodin*2 > this.maxEnergie){
+			return (this.jmeno + " presahuje svoje maximum energie");
+		}
+		this.energie += hodin*2;
+		return (this.jmeno + " odpocival " + hodin + " hodin a docerpal " + (hodin*2) + " energie.\n"
+				+ "Aktualni energie: " + this.energie);
+		
+	}
 	
 	public String getPredmet(Predmet predmet){
 		System.out.println(this.jmeno + " nasel " + predmet.vratNazev());
@@ -133,7 +140,6 @@ public abstract class Postava implements PostavaRozhrani{
 		}
 		
 	}
-	
 
 	
 	public float[] statyPostavy(){
@@ -167,6 +173,8 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	
+	
+	
 	public void levelUP(){
 		this.level += 1;
 		this.exp = 0;
@@ -179,7 +187,7 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 	
 	public Predmet bezSlot(){
-		Predmet nic = new Nic("NIC!");
+		Predmet nic = new Nic("Zadny predmet");
 		return nic;
 	}
 	
@@ -205,6 +213,6 @@ public abstract class Postava implements PostavaRozhrani{
 		for (Predmet i : predmety){
 			itemky += i.vratNazev() + " ";
 		}
-		return itemky;
+		return ("V " + this.jmeno + " inventari se nachazi: " + itemky + "\n");
 	}
 }

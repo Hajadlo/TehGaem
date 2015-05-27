@@ -5,7 +5,7 @@ import characters.*;
 import creature.Kreatura;
 import quest.Ukol;
 
-public class Menu { // OPRAVIT PRODEJ ITEMU
+public class Menu { // OPRAVIT PRODEJ ITEMU A MAKAT NA XML
 
 	public static void main(String[] args) {
 		

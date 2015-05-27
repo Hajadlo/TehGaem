@@ -15,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/nickname"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="15dp"
@@ -34,15 +34,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:ems="10"
-        android:inputType="textPassword" >
-    </EditText>
+        android:inputType="textPassword" />
 
     <TextView
         android:id="@+id/textView3"
@@ -55,7 +54,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/confirmPass"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="15dp"
@@ -65,7 +64,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/confirmation"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="15dp"

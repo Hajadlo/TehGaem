@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/postavaB"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Postava" />
+
+        <Button
+            android:id="@+id/arenaB"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Arena" />
+
+        <Button
+            android:id="@+id/questB"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Dobrodruzstvi" />
+
+        <Button
+            android:id="@+id/pubB"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Hospoda" />
+
+        <Button
+            android:id="@+id/offB"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:text="Odhlaseni" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="6.32" >
+
+        <LinearLayout
+            android:layout_width="113dp"
+            android:layout_height="178dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Ukoly"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/button1"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Ukol1" />
+
+            <Button
+                android:id="@+id/button2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Ukol2" />
+
+            <Button
+                android:id="@+id/button3"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ukol3" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="180dp"
+            android:text="Tady bude borec, kterej ti bude radit ve hre, co muzes kde delat atd, jeste tam asi dam ikonku, ale to bych si ji musel vytvorit... Takze snad neco najdu." />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1.34"
+        android:gravity="right"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="249dp"
+            android:layout_height="match_parent"
+            android:text="Tady se budou vypisovat vysledky areny, questu, levelupu, vseho. Nechce se mi delat aby vsechno reagovalo na sebe, tak udelam konzoli, ez :D" />
+    </LinearLayout>
+
+</LinearLayout>

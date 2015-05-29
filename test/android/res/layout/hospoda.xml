@@ -55,7 +55,7 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="282dp"
             android:orientation="vertical" >
 
             <TextView
@@ -76,24 +76,29 @@
                 android:id="@+id/editText1"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:inputType="number" >
-            </EditText>
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/button1"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="2dp"
                 android:text="Pracovat" />
+
+            <Button
+                android:id="@+id/Button01"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Odpocivat" />
 
             <Button
                 android:id="@+id/button2"
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Odpocivat" />
+                android:text="Leceni" />
         </LinearLayout>
 
         <TextView

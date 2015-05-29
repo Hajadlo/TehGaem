@@ -18,7 +18,6 @@ public abstract class Postava implements PostavaRozhrani{
 	protected int energie;
 	protected int maxEnergie;
 	
-
 	protected float sila;
 	protected float baseSila;
 	protected float inteligence;
@@ -26,7 +25,7 @@ public abstract class Postava implements PostavaRozhrani{
 	protected float utok;
 	protected float obrana;
 	
-	protected ArrayList<Predmet> predmety = new ArrayList<Predmet>();
+	public ArrayList<Predmet> predmety = new ArrayList<Predmet>();
 	
 	protected Predmet slot1;
 	protected Predmet slot2;
@@ -42,8 +41,10 @@ public abstract class Postava implements PostavaRozhrani{
 		this.energie = 20;
 		this.maxEnergie = 20;
 		
-		slot1 = this.bezSlot();
-		slot2 = this.bezSlot();
+		this.slot1 = this.bezSlot();
+		this.slot2 = this.bezSlot();
+		
+		this.predmety.add(this.bezSlot());
 	}
 	
 	
@@ -83,7 +84,7 @@ public abstract class Postava implements PostavaRozhrani{
 				nepritel.zlataky += this.level;
 			}
 			
-			return ("Porazil mì " + nepritel.jmeno + "\n");
+			return ("Porazil me " + nepritel.jmeno + "\n");
 		}
 	}
 	
@@ -124,7 +125,6 @@ public abstract class Postava implements PostavaRozhrani{
 		this.energie += hodin*2;
 		return (this.jmeno + " odpocival " + hodin + " hodin a docerpal " + (hodin*2) + " energie.\n"
 				+ "Aktualni energie: " + this.energie);
-		
 	}
 	
 	
@@ -144,7 +144,12 @@ public abstract class Postava implements PostavaRozhrani{
 		}
 	}
 	
+	
 	public void prodejItem(Predmet predmet){
+		while (predmet.vratNazev().equals("Zadny predmet")){
+			//neco uz nevim co, chci jit dom :D
+		}
+		System.out.println(predmety);
 		this.zlataky += (predmet.vratCenu())/2;
 		System.out.println(this.jmeno + " prodal " + predmet.vratNazev() + " a ziskal " + (predmet.vratCenu()/2 + " zlatych\n"));
 		predmety.remove(predmet);
@@ -163,8 +168,8 @@ public abstract class Postava implements PostavaRozhrani{
 		this.obrana = this.getStaty(slot2)[1];
 		float[] poleStatu = {this.sila, this.inteligence, this.utok, this.obrana, this.zivoty};
 		return poleStatu;
-		
 	}
+	
 	
 	public String aktivujQuest(Ukol ukol, Kreatura nepritel){
 		System.out.println(this.jmeno + " se vydal na ukol: " + ukol.nazev);
@@ -182,6 +187,7 @@ public abstract class Postava implements PostavaRozhrani{
 		return (this.jmeno + " se vypravil na ukol a ziskal " + (this.level * ukol.odmena) + " zkusenosti a ztratil " + ukol.vratEnergii() + " energie\n");
 	}
 	
+	
 	public String pracuj(int hodin){
 		System.out.println(this.jmeno + " by si chtel pracovat " + hodin + " hodin");
 		if (hodin > this.energie){
@@ -193,21 +199,30 @@ public abstract class Postava implements PostavaRozhrani{
 	}
 		
 	
-	public void levelUP(){
+	public String levelUP(){
 		this.level += 1;
 		this.exp = 0;
-		System.out.println(this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level+"\n");
+		if (this.povolani.equals("Kouzelnik")){
+			this.inteligence += this.level;
+		}
+		else{
+			this.sila += this.level;
+		}
+		return(this.jmeno + " dosahnul dost zkusenosti a je ted level " + this.level+"\n");
 	}
+	
 	
 	public float[] getStaty(Predmet predmet){
 		float[] policko = predmet.vratStaty();
 		return policko;
 	}
 	
+	
 	public Predmet bezSlot(){
 		Predmet nic = new Nic("Zadny predmet");
 		return nic;
 	}
+	
 	
 	public Predmet getSlot1(){
 		return slot1;
@@ -218,6 +233,7 @@ public abstract class Postava implements PostavaRozhrani{
 		return slot2;
 	}
 	
+	
 	public String info(){
 		return ("\n" + this.povolani + " " + this.jmeno + "\nHP: " + this.zivoty + "\nZlataky: "
 				+ this.zlataky + "\nLevel: " + this.level + "\n" + "XP: " + this.exp +"\nEnergie: "
@@ -225,6 +241,7 @@ public abstract class Postava implements PostavaRozhrani{
 				+ "\n" + "Utok: " + this.statyPostavy()[2] + "\nObrana: " + this.statyPostavy()[3] + "\nPredmety: " 
 				+ slot1.vratNazev() + ", " + slot2.vratNazev()) +"\n";
 	}
+	
 	
 	public String inventar(){
 		String itemky = "";

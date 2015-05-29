@@ -45,7 +45,7 @@ public class Menu { // OPRAVIT PRODEJ ITEMU A MAKAT NA XML
 		
 		System.out.println(magic.odpocinek(3));
 		
-		typek.prodejItem(Predmet.setPredmet());
+		magic.prodejItem(magic.predmety.get(0));
 		
 		System.out.println(typek.pracuj(2));
 	}

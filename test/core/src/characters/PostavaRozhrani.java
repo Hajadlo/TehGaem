@@ -14,7 +14,7 @@ public interface PostavaRozhrani{
 	String getPredmet(Predmet predmet);
 	float[] statyPostavy();
 	String aktivujQuest(Ukol ukol, Kreatura nepritel);
-	void levelUP();
+	String levelUP();
 	float[] getStaty(Predmet predmet);
 	Predmet bezSlot();
 	Predmet getSlot1();

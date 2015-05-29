@@ -9,6 +9,7 @@ public class Nic extends Predmet{
 		this.obrana = 0;
 		this.bonusStr = 0;
 		this.bonusInt = 0;
+		this.cena = 0;
 	}
 
 }

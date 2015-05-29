@@ -130,11 +130,11 @@ public abstract class Postava implements PostavaRozhrani{
 	
 	public String getPredmet(Predmet predmet){
 		System.out.println(this.jmeno + " nasel " + predmet.vratNazev());
-		if (predmet.vratSlot() == 1 && (this.povolani == predmet.proPovolani || predmet.proPovolani == "Oboje")){
+		if (predmet.vratSlot() == 1 && (this.povolani.equals(predmet.proPovolani) || predmet.proPovolani.equals("Oboje"))){
 			slot1 = predmet;
 			return (predmet.vratNazev() + " byl pridan jako zbran\n");
 		}
-		else if(predmet.vratSlot() == 2 && (this.povolani == predmet.proPovolani || predmet.proPovolani == "Oboje")){
+		else if(predmet.vratSlot() == 2 && (this.povolani.equals(predmet.proPovolani) || predmet.proPovolani .equals("Oboje"))){
 			slot2 = predmet;
 			return (predmet.vratNazev() + " byl pridan jako brneni\n");
 		}
@@ -144,7 +144,7 @@ public abstract class Postava implements PostavaRozhrani{
 		}
 	}
 	
-	public String prodejItem(Predmet predmet){ // TOHLE NENI SPRAVNE! POTOM OPRAVIT
+	public String prodejItem(Predmet predmet){
 		predmety.remove(predmet);
 		this.zlataky += (predmet.vratCenu())/2;
 		return (this.jmeno + " prodal " + predmet.vratNazev() + " a ziskal " + (predmet.vratCenu()/2 + " zlatych\n"));

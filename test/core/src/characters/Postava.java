@@ -144,10 +144,10 @@ public abstract class Postava implements PostavaRozhrani{
 		}
 	}
 	
-	public String prodejItem(Predmet predmet){
-		predmety.remove(predmet);
+	public void prodejItem(Predmet predmet){
 		this.zlataky += (predmet.vratCenu())/2;
-		return (this.jmeno + " prodal " + predmet.vratNazev() + " a ziskal " + (predmet.vratCenu()/2 + " zlatych\n"));
+		System.out.println(this.jmeno + " prodal " + predmet.vratNazev() + " a ziskal " + (predmet.vratCenu()/2 + " zlatych\n"));
+		predmety.remove(predmet);
 	}
 
 	
